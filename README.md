@@ -7,6 +7,9 @@ Note that we've set up some basic authentication with the Devise gem and forms t
 ## Directions
 
 * Pull down a copy of the Repo and run `bundle`, `bundle exec rake db:setup`
+
+<!-- rails g model Appointment start_at:datetime end_at:datetime patient_id patient_id:integer staff_member_id:integer -->
+
 * Create a new appointment model. The appointments table should have the following fields: start_at (DateTime), end_at (DateTime), patient_id (the id of a user with a 'patient' role), staff_member_id (the id of a user with a 'staff_member' role)
 * Add the following validations: A patient cannot have multiple appointments that overlap with each other and an appointment cannot be created in the past
 * Create a service that parses a CSV of appointment data like in `lib/assets/appointments.csv`  and creates those appointments
