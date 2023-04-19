@@ -1,0 +1,7 @@
+%h1 Appointments#create
+%p Find me in app/views/appointments/create.html.haml
+
+<%= form_with url: import_appointments_path, method: :post do |form| %>
+<%= form.file_field :file %>
+<%= form.button "Import" %>
+<% end %>
