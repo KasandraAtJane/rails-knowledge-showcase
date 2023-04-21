@@ -5,14 +5,14 @@ class CsvImportAppointmentsService
     file = File.open(file)
     csv = CSV.parse(file, headers: true, col_sep: ';')
     csv.each do |row|
-      #   appointment_hash = JSON.parse(appointment.to_json)
       appointment_hash = {}
       appointment_hash[:start_at] = row['start_at']
-      appointment_hash[:end_at] = row['start_at']
-      appointment_hash[:patient_id] = row['start_at']
+      appointment_hash[:end_at] = row['end_at']
+      appointment_hash[:patient_id] = row['patient_id']
       appointment_hash[:staff_member_id] = row['staff_member_id']
       Appointment.create(appointment_hash)
-      p row
+      print appointment_hash
+      puts appointment_hash
     end
   end
 end

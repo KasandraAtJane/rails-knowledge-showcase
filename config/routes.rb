@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post :import
     end  
   end  
+  
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

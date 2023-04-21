@@ -1,5 +1,14 @@
 class AppointmentsController < ApplicationController
-  def new; end
+  def new
+    @appointments = Appointment.all
+  end
+
+  def index
+    @appointments = Appointment.all
+
+    # transform into json
+    # Google: turn active record relation into json
+  end
 
   def import
     file = params[:file]
@@ -9,11 +18,10 @@ class AppointmentsController < ApplicationController
     redirect_to appointments_path, notice: 'Appointments imported!'
   end
 
-  def create; end
-
-  def destroy; end
-
-  def index
+  def destroy
     @appointments = Appointment.all
   end
+
+  # def request; end
+  # def response; end
 end

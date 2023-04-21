@@ -1,7 +1,8 @@
 require "test_helper"
 
 class AppointmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
+  # test "should allow only csv to upload"
+  #   appointment = create(:appointment)
+    
   # end
 end
