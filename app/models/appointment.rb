@@ -2,8 +2,8 @@ class Appointment < ApplicationRecord
   # patient cannot have multiple appointments that overlap with each other
   # appointment cannot be created in the past
 
-  validate :appointment_cannot_be_booked_in_the_past
-  validate :patient_own_appointments_cannot_overlap
+  # validate :appointment_cannot_be_booked_in_the_past
+  # validate :patient_own_appointments_cannot_overlap
   #   validate :appointment, uniqueness: true
   #   validate start_at < end_at
 end

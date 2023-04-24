@@ -3,8 +3,23 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.all
   end
 
+  def show
+    @appointment = Appointment.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @appointment }
+    end
+  end
+
   def index
     @appointments = Appointment.all
+    # render json: @appointments.to_json
+
+    respond_to do |format|
+      format.html
+      format.json { render :index }
+    end
 
     # transform into json
     # Google: turn active record relation into json
@@ -21,7 +36,4 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointments = Appointment.all
   end
-
-  # def request; end
-  # def response; end
 end
