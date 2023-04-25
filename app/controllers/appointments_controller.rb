@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.all
+    #add staff member and patient == user
     # render json: @appointments.to_json
 
     respond_to do |format|

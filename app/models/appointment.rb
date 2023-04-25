@@ -2,16 +2,16 @@ class Appointment < ApplicationRecord
   # patient cannot have multiple appointments that overlap with each other
   # commenting out for now, as it prevents me from importing the csv
   # validate :appointment_cannot_be_booked_in_the_past
-  
+
   # appointment cannot be created in the past
   # commenting out for now, as it prevents me from importing the csv
   # validate :patient_own_appointments_cannot_overlap
-  
+
   belongs_to :patient, class_name: 'User'
   belongs_to :staff_member, class_name: 'User'
   #   validate :appointment, uniqueness: true
-  
-  attribute :duration, :integer 
+
+  attribute :duration, :integer
   attribute :patient_name, :string
   attribute :staff_member_name, :string
 
@@ -27,7 +27,6 @@ class Appointment < ApplicationRecord
     patient.name
   end
 end
-
 
 private
 
