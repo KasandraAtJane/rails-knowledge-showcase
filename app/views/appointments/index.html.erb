@@ -2,25 +2,29 @@
 <p style="color: green"><%= notice %></p> 
 
 
-        <%= @appointments.each do |appointment| %>
-        <table>
-    <tr>
-        <th> Staff Member ID </th>
-        <td> <%= appointment.staff_member_id %> </td>
-    </tr>
-    <tr>
-        <th> Patient ID </th>
-        <td> <%= appointment.patient_id %> </td>
-    </tr>
-    <tr>
-        <th> Start Time </th>
-        <td> <%= appointment.start_at %> </td>
-    </tr>
-    <tr>
-        <th> End Time </th>
-        <td> <%= appointment.end_at %> </td>
-    </tr>
-</table>
+    <%= @appointments.each do |appointment| %>
+    <table>
+        <tr>
+            <th> Appointment ID </th>
+            <td> <%= appointment.id %> </td>
+        </tr>
+        <tr>
+            <th> Staff Member ID </th>
+            <td> <%= appointment.staff_member_id %> </td>
+        </tr>
+        <tr>
+            <th> Patient ID </th>
+            <td> <%= appointment.patient_id %> </td>
+        </tr>
+        <tr>
+            <th> Start Time </th>
+            <td> <%= appointment.start_at %> </td>
+        </tr>
+        <tr>
+            <th> End Time </th>
+            <td> <%= appointment.end_at %> </td>
+        </tr>
+    </table>
     
         <%end%>
         

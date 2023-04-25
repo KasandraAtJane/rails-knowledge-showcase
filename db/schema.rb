@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_19_115201) do
+ActiveRecord::Schema.define(version: 2023_04_24_183839) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_at"
@@ -31,4 +31,6 @@ ActiveRecord::Schema.define(version: 2023_04_19_115201) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "appointments", "users", column: "patient_id"
+  add_foreign_key "appointments", "users", column: "staff_member_id"
 end
