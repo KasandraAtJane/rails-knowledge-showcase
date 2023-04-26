@@ -6,13 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(name: 'Dylan Barr', email: 'dylbar@jane.com', password: 'LotionBottleOnTheTable333!!', role: 'patient')
 
-User.create(name: "Dylan Barr", email: "dylbar@jane.com", role: "patient")
+User.create(name: 'Calvin McDonald', email: 'calvin@mcdonalds.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'patient')
 
-User.create(name: "Calvin McDonald", email: "calvin@mcdonalds.com", role: "patient")
+User.create(name: 'Jason Tatum', email: 'jasont@gexample.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'staff_member')
 
-User.create(name: "Jason Tatum", email: "jasont@gexample.com", role: "staff_member")
+User.create(name: 'Jason Chuck', email: 'jasonchuck@gexample.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'staff_member')
 
-User.create(name: "Jason Chuck", email: "jasonchuck@gexample.com", role: "staff_member")
+User.create(name: 'Trevor Johns', email: 'trevvvor@example.com', password: 'LotionBottleOnTheTable333!!', role: 'super')
 
-User.create(name: "Trevor Johns", email: "trevvvor@example.com", role: "super")
+User.create(name: 'Kasandra staff', email: 'Kasandra@example.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'staff_member')
+User.create(name: 'Kasandra patient', email: 'Kasandrapatient@example.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'patient')
+User.create(name: 'Kasandra super', email: 'Kasandrasuper@example.com', password: 'LotionBottleOnTheTable333!!',
+            role: 'super')
