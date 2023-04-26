@@ -23,7 +23,7 @@ Note that we've set up some basic authentication with the Devise gem and forms t
   * end_at
   * duration of the appointment
 
-* Possible parameters for filtering for this endpoint can be :patient_id, :staff_member_id, date 
+* Possible parameters for filtering for this endpoint can be :patient_id, :staff_member_id, date - saving for the end
 * If a patient tries to access this endpoint, it should be unauthorized
 * If a staff member tries to access this endpoint, they should only be authorized to see their own appointment data
 * A User with a role of 'super' should be authorized to view all appointment data
