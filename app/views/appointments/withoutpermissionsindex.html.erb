@@ -1,18 +1,7 @@
-<p style="color: green"><%= notice %></p>
 
-<%= form_with url: import_appointments_path, method: :post do |form| %>
-    <%= form.file_field :file, accept: ".csv" %>
-    <%= form.button "Import" %>
-<% end %>
+<p style="color: green"><%= notice %></p> 
 
-<%= "Welcome, #{current_user.name} your role is #{current_user.role}" %>
-
- Appointments in the database:
-  <%= @appointments.count %>
-  <br>
-  <br>
-
-  <%= @appointments.each do |appointment| %>
+<%= @appointments.each do |appointment| %>
         <table>
             <tr>
                 <th> Appointment ID </th>
@@ -36,4 +25,3 @@
             </tr>
         </table>
     <% end %>
-  

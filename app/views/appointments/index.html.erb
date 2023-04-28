@@ -1,6 +1,9 @@
 
 <p style="color: green"><%= notice %></p> 
 
+<p> current role:  <%=current_user.role %> </p>
+<p> current staff id <%=current_user.id %> </p>
+
 <% if @appointments.present? %>
     <%= @appointments.each do |appointment| %>
     <% if can? :staff_member, appointment %>
@@ -49,10 +52,10 @@
                 <td> <%= appointment.end_at %> </td>
             </tr>
         </table>
-        <%end%>
+        <% end%>
     <%end%>
      <% else %>   
-        <h2> Whoops! Looks like you don't have any upcoming appointments. Please reach out to a staff member to book one. <h2>
+     <h2> Whoops! Looks like you don't have any upcoming appointments. Please reach out to a staff member to book one. <h2>
 <%end%>    
         
 

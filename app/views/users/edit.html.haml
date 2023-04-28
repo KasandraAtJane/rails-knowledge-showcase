@@ -1,0 +1,21 @@
+%h1 Edit Your Profile
+
+- if @user.errors.any?
+  %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+
+= form_for @user do |f|
+  %div
+    = f.label :first_name
+    = f.text_field :first_name
+  %div
+    = f.label :last_name
+    = f.text_field :last_name
+  %div
+    = f.label :email
+    = f.email_field :email
+  %br
+  = f.submit class: "btn btn-outline-primary"
+%br
+= link_to "Change Password", change_password_path(@user.id)

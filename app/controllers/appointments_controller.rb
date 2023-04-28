@@ -1,8 +1,13 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  
+  # before_action :set_current_user, only: [:index]
+
+  # load_and_authorize_resource
+
   def new
     @appointments = Appointment.all
+    puts "Current User: #{current_user.inspect}"
+    puts "Appointments: #{@appointments.inspect}"
   end
 
   def show
@@ -15,17 +20,21 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.all
-    #add staff member and patient == user
-    # render json: @appointments.to_json
+    puts "Current User: #{current_user.inspect}"
+    puts "Appointments: #{@appointments.inspect}"
 
-    respond_to do |format|
-      format.html
-      format.json { render :index }
+    if current_user.role == 'staff_member'
+      staff_member_id = params[:staff_member].to_i
+      @appointments = current_user.staff_member_appointments
+    elsif current_user.role == 'super'
+      @appointments = Appointment.all
+    elsif current_user.role == 'patient'
+      @appointments = current_user.patient_appointments
+    else
+      redirect_to new_user_session_path, notice: 'You do not have any upcoming appointments'
     end
-
-    # transform into json
-    # Google: turn active record relation into json
+  
+    # render json: @appointments.to_json
   end
 
   def import
@@ -37,6 +46,6 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointments = Appointment.all
+    # @appointments = Appointment.all
   end
 end

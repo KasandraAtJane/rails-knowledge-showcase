@@ -1,0 +1,24 @@
+%h1 Sign Up
+
+- if @user.errors.any?
+  %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+
+= form_for @user do |f|
+  %div
+    = f.label :first_name
+    = f.text_field :first_name
+  %div
+    = f.label :last_name
+    = f.text_field :last_name
+  %div
+    = f.label :email
+    = f.email_field :email
+  %div
+    = f.label :password
+    = f.password_field :password
+  %div
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  = f.submit class: "btn btn-outline-primary"
