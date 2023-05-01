@@ -20,8 +20,6 @@ class Ability
 # end
 
 
-# old version, can be erased-- but want to keep it for reference
-
 # class Ability
 #   include CanCan::Ability
 

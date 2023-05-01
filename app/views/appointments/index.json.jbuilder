@@ -1,5 +1,3 @@
-
-
 json.array! @appointments do |appointment|
   json.id appointment.id
   json.start_at appointment.start_at

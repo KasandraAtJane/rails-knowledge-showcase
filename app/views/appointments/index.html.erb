@@ -2,10 +2,10 @@
 <p style="color: green"><%= notice %></p> 
 
 <p> current role:  <%=current_user.role %> </p>
-<p> current staff id <%=current_user.id %> </p>
+<p> current id: <%=current_user.id %> </p>
 
 <% if @appointments.present? %>
-    <%= @appointments.each do |appointment| %>
+    <% @appointments.each do |appointment| %>
     <% if can? :staff_member, appointment %>
         <table>
             <tr>

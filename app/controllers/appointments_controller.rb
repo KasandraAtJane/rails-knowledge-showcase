@@ -4,37 +4,57 @@ class AppointmentsController < ApplicationController
 
   # load_and_authorize_resource
 
+
+  # has_scope :patient, only: :index
+  # has_scope :staff_member, only: :index
+
   def new
     @appointments = Appointment.all
-    puts "Current User: #{current_user.inspect}"
-    puts "Appointments: #{@appointments.inspect}"
   end
 
   def show
     @appointment = Appointment.find(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @appointment }
+    if can?(:patient, @appointment)
+      respond_to do |format|
+        format.html
+        format.json { render json: @appointment }
+      end  
+    elsif can?(:staff_member, @appointment)
+      respond_to do |format|
+        format.html
+        format.json { render json: @appointment }
+      end    
+    else    
+      redirect_to appointments_path, notice: 'Whoops! You are not authorized to view that appointment'
     end
   end
 
   def index
-    puts "Current User: #{current_user.inspect}"
-    puts "Appointments: #{@appointments.inspect}"
 
-    if current_user.role == 'staff_member'
-      staff_member_id = params[:staff_member].to_i
-      @appointments = current_user.staff_member_appointments
-    elsif current_user.role == 'super'
-      @appointments = Appointment.all
-    elsif current_user.role == 'patient'
-      @appointments = current_user.patient_appointments
-    else
-      redirect_to new_user_session_path, notice: 'You do not have any upcoming appointments'
+    @appointments = Appointment.all
+
+    if params[:patient].present? && can?(:staff_member, Appointment)
+      @appointments = @appointments.where(patient_id: params[:patient])
+    elsif params[:staff_member].present? && can?(:staff_member, Appointment)
+      @appointments = @appointments.where(staff_member_id: params[:staff_member])
     end
+
+    # if current_user.role == 'staff_member'
+    #   staff_member_id = params[:staff_member].to_i
+    #   @appointments = current_user.staff_member_appointments
+    # elsif current_user.role == 'patient'
+    #   @appointments = current_user.patient_appointments
+    # elsif current_user.role == 'super'
+    #   @appointments = Appointment.all 
+    # else
+    #   redirect_to new_user_session_path, notice: 'You do not have any upcoming appointments'
+    # end
   
-    # render json: @appointments.to_json
+    respond_to do |format|
+      format.html
+      format.json { render json: @appointments }
+    end
   end
 
   def import
@@ -49,3 +69,5 @@ class AppointmentsController < ApplicationController
     # @appointments = Appointment.all
   end
 end
+
+
